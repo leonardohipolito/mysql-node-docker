@@ -3,11 +3,12 @@ services:
   app:
     build:
       context: .
-    image: leonardohipolito/node-app:latest
     container_name: app
     tty: true
+    entrypoint: node index.js
     volumes:
       - ./app:/usr/app
+      - /usr/app/node_modules
     networks:
       - node-network
     depends_on:
@@ -16,7 +17,6 @@ services:
     build:
       context: ./nginx
     image: leonardohipolito/nginx:latest
-    container_name: nginx
     restart: always
     networks:
       - node-network

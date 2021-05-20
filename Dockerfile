@@ -1,5 +1,5 @@
 FROM node:latest
 WORKDIR /usr/app
 COPY app/ .
-ENTRYPOINT node index.js
+RUN npm install
 EXPOSE 3000
